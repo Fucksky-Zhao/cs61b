@@ -48,7 +48,7 @@ public class NBody{
         StdDraw.enableDoubleBuffering();
         double curTime = 0;
         double[] xForces = new double[ps.length], yForces = new double[ps.length];
-        while (curTime < T){
+        while (curTime <= T){
             for (int i = 0; i<ps.length; i++){
                 xForces[i] = ps[i].calcNetForceExertedByX(ps);
                 yForces[i] = ps[i].calcNetForceExertedByY(ps);
