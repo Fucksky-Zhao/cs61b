@@ -47,26 +47,22 @@ public class Planet{
     }
 
     public double calcNetForceExertedByX(Planet[] ps){
-        double dx;
         double netForceX = 0;
         for (Planet p: ps){
             if (this.equals(p)){
                 continue;
             }
-            dx = p.xxPos - xxPos;
             netForceX += this.calcForceExertedByX(p);
         }
         return netForceX;
     }
 
     public double calcNetForceExertedByY(Planet[] ps){
-        double dy;
         double netForceY = 0;
         for (Planet p: ps){
             if (this.equals(p)){
                 continue;
             }
-            dy = p.yyPos - yyPos;
             netForceY += this.calcForceExertedByY(p);
         }
         return netForceY;
@@ -83,5 +79,4 @@ public class Planet{
     public void draw(){
         StdDraw.picture(xxPos, yyPos, "images/" + imgFileName);
     }
-
 }
