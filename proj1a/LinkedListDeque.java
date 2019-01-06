@@ -1,5 +1,5 @@
 public class LinkedListDeque<T> {
-    public class ListNode {
+    private class ListNode {
         public T item;
         public ListNode n;
         public ListNode p;
@@ -11,8 +11,8 @@ public class LinkedListDeque<T> {
         }
     }
 
-    public ListNode sentinel;
-    public int length;
+    private ListNode sentinel;
+    private int length;
 
     public LinkedListDeque( ){
         sentinel = new ListNode(null, null, null);
@@ -53,17 +53,27 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst(){
-        ListNode q = sentinel.n;
-        sentinel.n = q.n;
-        q.n.p = sentinel;
-        return q.item;
+        if (size() >= 1) {
+            ListNode q = sentinel.n;
+            sentinel.n = q.n;
+            q.n.p = sentinel;
+            length--;
+            return q.item;
+        }else{
+            return null;
+        }
     }
 
     public T removeLast(){
-        ListNode q = sentinel.p;
-        sentinel.p = q.p;
-        q.p.n = sentinel;
-        return q.item;
+        if (size() >= 1) {
+            ListNode q = sentinel.p;
+            sentinel.p = q.p;
+            q.p.n = sentinel;
+            length--;
+            return q.item;
+        }else{
+            return null;
+        }
     }
 
     public T get(int index){

@@ -1,5 +1,5 @@
 public class ArrayDeque<T> {
-    private T items[];
+    private T[] items;
     private int size;
     private int front;
     private int rear;
@@ -11,7 +11,7 @@ public class ArrayDeque<T> {
         rear = 0;
     }
 
-    public void resize(){
+    private void resize(){
         if (size == items.length){
             T[] newItems = (T[]) new Object[2*size];
             System.arraycopy(items, front, newItems, 0, size - front);
