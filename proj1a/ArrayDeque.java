@@ -77,6 +77,9 @@ public class ArrayDeque<T> {
         if (size < 0.25*items.length && size >= 16){
             resize();
         }
+        if (size < 1){
+            return null;
+        }
         T result = items[front];
         items[front] = null;
         front = (front + 1) % items.length;
@@ -87,6 +90,9 @@ public class ArrayDeque<T> {
     public T removeLast(){
         if (size < 0.25*items.length && size >= 16){
             resize();
+        }
+        if (isEmpty()){
+            return null;
         }
         T result = items[(rear - 1 + items.length) % items.length];
         items[(rear - 1 + items.length) % items.length] = null;
