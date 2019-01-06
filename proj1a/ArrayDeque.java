@@ -19,14 +19,14 @@ public class ArrayDeque<T> {
             front = 0;
             rear = size();
             items = newItems;
-        }else if (size < 0.25 * items.length && items.length >= 16) {
-            T[] newItems = (T[]) new Object[size / 2];
-            if (rear > front){
+        } else if (size < 0.25 * items.length && items.length >= 16) {
+            T[] newItems = (T[]) new Object[items.length / 2];
+            if (front < rear) {
                 System.arraycopy(items, front, newItems, 0, rear - front);
                 front = 0;
                 rear = size();
                 items = newItems;
-            }else {
+            } else {
                 System.arraycopy(items, front, newItems, 0, items.length - front);
                 System.arraycopy(items, 0, newItems, items.length - front, rear);
                 front = 0;
@@ -40,8 +40,8 @@ public class ArrayDeque<T> {
         if (items.length == size) {
             resize();
         }
-        items[(front - 1 + items.length) % items.length] = item;
-        front = (front - 1 + items.length) % items.length;
+		front = (front - 1 + items.length) % items.length;
+        items[front] = item;
         size++;
     }
 
@@ -67,10 +67,22 @@ public class ArrayDeque<T> {
 
     public void printDeque() {
         int i = front;
-        while (i % items.length < rear) {
-            System.out.print(items[i] + " ");
-            i = (i + 1) % items.length;
-        }
+        if (front <= rear) {
+			while (i < rear) {
+				System.out.print(items[i] + " ");
+				i = (i + 1) % items.length;
+			}
+		} else {
+			while (i < items.length) {
+				System.out.print(items[i] + " ");
+				i = i + 1;
+			}
+			i = 0;
+			while (i < rear) {
+				System.out.print(items[i] + " ");
+				i++;
+			}
+		}
     }
 
     public T removeFirst() {
@@ -88,15 +100,15 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
-        if (size < 0.25 * items.length && items.length >= 16){
+        if (size < 0.25 * items.length && items.length >= 16) {
             resize();
         }
         if (isEmpty()) {
             return null;
         }
         T result = items[(rear - 1 + items.length) % items.length];
-        items[(rear - 1 + items.length) % items.length] = null;
-        rear = (rear - 1 + items.length) % items.length;
+		rear = (rear - 1 + items.length) % items.length;
+        items[rear] = null;
         size--;
         return result;
     }

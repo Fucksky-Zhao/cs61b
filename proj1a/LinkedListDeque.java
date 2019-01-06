@@ -1,8 +1,8 @@
 public class LinkedListDeque<T> {
     private class ListNode {
-        public T item;
-        public ListNode n;
-        public ListNode p;
+        private T item;
+        private ListNode n;
+        private ListNode p;
 
         public ListNode(T item, ListNode n, ListNode p) {
             this.item = item;
@@ -34,7 +34,7 @@ public class LinkedListDeque<T> {
     }
 
     public boolean isEmpty() {
-        if (sentinel.n == sentinel){
+        if (sentinel.n == sentinel) {
             return true;
         }
         return false;
@@ -46,7 +46,7 @@ public class LinkedListDeque<T> {
 
     public void printDeque() {
         ListNode q = sentinel.n;
-        while (q != sentinel){
+        while (q != sentinel) {
             System.out.print(q.item + " ");
             q = q.n;
         }
@@ -59,7 +59,7 @@ public class LinkedListDeque<T> {
             q.n.p = sentinel;
             length--;
             return q.item;
-        }else{
+        } else {
             return null;
         }
     }
@@ -90,7 +90,7 @@ public class LinkedListDeque<T> {
     }
 
     public T getRecursive(int index) {
-        if (index >= this.size() || index < 0){
+        if (index >= this.size() || index < 0) {
             return null;
         } else if (index == 0) {
             return sentinel.n.item;
