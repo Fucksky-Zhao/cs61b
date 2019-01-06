@@ -115,12 +115,12 @@ public class ArrayDeque<T> {
         return items[(index + front) % items.length];
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> FuckDeque = new ArrayDeque<>();
-        FuckDeque.addFirst(0);
-		FuckDeque.removeLast();
-        FuckDeque.addFirst(2);
-        Integer ttt = FuckDeque.get(0);
+//    public static void main(String[] args) {
+//        ArrayDeque<Integer> FuckDeque = new ArrayDeque<>();
+//        FuckDeque.addFirst(0);
+//		FuckDeque.removeLast();
+//        FuckDeque.addFirst(2);
+//        Integer ttt = FuckDeque.get(0);
 //        int i = 0;
 //        while (i < 100) {
 //            FuckDeque.addFirst(i * 1.2);
@@ -132,5 +132,5 @@ public class ArrayDeque<T> {
 //            FuckDeque.removeFirst();
 //            i++;
 //        }
-    }
+//    }
 }
