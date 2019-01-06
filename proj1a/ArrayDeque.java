@@ -19,7 +19,7 @@ public class ArrayDeque<T> {
             front = 0;
             rear = size();
             items = newItems;
-        }else if (size < 0.25*items.length && size >= 16){
+        }else if (size < 0.25*items.length && items.length >= 16){
             T[] newItems = (T[]) new Object[size/2];
             if (rear > front){
                 System.arraycopy(items, front, newItems, 0, rear - front);
@@ -74,7 +74,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
-        if (size < 0.25*items.length && size >= 16){
+        if (size < 0.25*items.length && items.length >= 16){
             resize();
         }
         if (size < 1){
@@ -88,7 +88,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast(){
-        if (size < 0.25*items.length && size >= 16){
+        if (size < 0.25*items.length && items.length >= 16){
             resize();
         }
         if (isEmpty()){
