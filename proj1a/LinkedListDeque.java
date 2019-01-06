@@ -34,10 +34,7 @@ public class LinkedListDeque<T> {
     }
 
     public boolean isEmpty() {
-        if (sentinel.n == sentinel) {
-            return true;
-        }
-        return false;
+        return length == 0;
     }
 
     public int size() {
@@ -77,11 +74,11 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int index) {
-        ListNode q = sentinel.n;
-        int i = 0;
         if (index >= this.size() || index < 0) {
             return null;
         }
+		ListNode q = sentinel.n;
+		int i = 0;
         while (i < index) {
             q = q.n;
             i++;
