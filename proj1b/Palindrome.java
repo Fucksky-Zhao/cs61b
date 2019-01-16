@@ -9,7 +9,7 @@ public class Palindrome {
 	}
 
 	public boolean isPalindrome(String word) {
-		if (word == null){
+		if (word == null) {
 			return true;
 		}
 		return isPalindromeHelper(word, 0);
@@ -28,7 +28,7 @@ public class Palindrome {
 	}
 
 	public boolean isPalindrome(String word, CharacterComparator cc) {
-		if (word == null || word.length() <= 1){
+		if (word == null || word.length() <= 1) {
 			return true;
 		}
 		int size = word.length();
